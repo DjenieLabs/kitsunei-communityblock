@@ -1,0 +1,40 @@
+<!-- RGB Simulator Block - Node Icon -->
+<template id="node_icon">
+
+  <div class="block" id="{{ address }}" nodeName="{{ nodeName }}" blockId="{{ id }}" blockType="{{ code }}">
+    <i class="fa fa-envelope"></i>
+    <span>
+      {{ name }}
+      <span class="badge">#{{ address }}</span>
+    </span>
+    <span id="{{ address }}_data" class="block-rgbdata"></span>
+  </div>
+
+</template>
+
+<!-- EmailSender - Bar Icon -->
+<template id="bar_icon">
+  <div class="block" id="local{{ address }}">
+      <span>
+        {{ name }}
+        <span class="badge">#{{ address }}</span>
+      </span>
+  </div>
+</template>
+
+<!-- canvas view -->
+<template id="canvas-view">
+  <div class="block canvasblock" id="{{ address }}">
+      <span>
+        <i class="fa fa-envelope"></i>
+        {{ label }}
+      </span>
+      <span id="{{ address }}_data" class="block-data"></span>
+  </div>
+</template>
+
+<template id="logic_maker_content">
+  <div style="text-align:center;">
+    Nothing to do here, you can use the following actions:</div><div><b>SEND
+  </div>
+</template>

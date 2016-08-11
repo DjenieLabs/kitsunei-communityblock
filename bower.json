@@ -1,0 +1,12 @@
+{
+  "name": "{{ cookiecutter.block_name }}",
+  "version": "{{ cookiecutter.version }}",
+  "description": "{{ cookiecutter.description }}",
+  "homepage": "",
+  "authors": [
+    "{{ cookiecutter.author_name }}"
+  ],
+  "main": "main.js",
+  "keywords": [],
+  "license": "MIT"
+}
