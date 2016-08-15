@@ -6,6 +6,6 @@
     "description": "A short description of the project.",
     "version": "0.1.0",
     "_copy_without_render": [
-        "index.html"
+        "*.html", "**/*.html"
     ]
 }
