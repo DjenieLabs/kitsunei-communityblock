@@ -1,40 +1,25 @@
-<!-- RGB Simulator Block - Node Icon -->
+<!-- Active node component -->
 <template id="node_icon">
 
   <div class="block" id="{{ address }}" nodeName="{{ nodeName }}" blockId="{{ id }}" blockType="{{ code }}">
-    <i class="fa fa-envelope"></i>
+    <i class="fa fa-map-signs"></i>
     <span>
       {{ name }}
       <span class="badge">#{{ address }}</span>
     </span>
-    <span id="{{ address }}_data" class="block-rgbdata"></span>
   </div>
 
 </template>
 
-<!-- EmailSender - Bar Icon -->
+<!-- Menu component -->
 <template id="bar_icon">
-  <div class="block" id="local{{ address }}">
-      <span>
-        {{ name }}
-        <span class="badge">#{{ address }}</span>
-      </span>
-  </div>
-</template>
 
-<!-- canvas view -->
-<template id="canvas-view">
-  <div class="block canvasblock" id="{{ address }}">
-      <span>
-        <i class="fa fa-envelope"></i>
-        {{ label }}
-      </span>
-      <span id="{{ address }}_data" class="block-data"></span>
+  <div class="sidebar__navigation-item" id="local{{ blockId }}">
+    <i class="sidebar__navigation-icon fa fa-map-signs"></i>
+    <div class="sidebar__navigation-label">
+      {{ name }}
+      <span class="badge">#{{ address }}</span>
+    </div>
   </div>
-</template>
 
-<template id="logic_maker_content">
-  <div style="text-align:center;">
-    Nothing to do here, you can use the following actions:</div><div><b>SEND
-  </div>
 </template>
