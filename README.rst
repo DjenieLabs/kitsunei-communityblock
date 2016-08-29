@@ -34,7 +34,9 @@ Use the following command for deactivate your virtual env
         $ deactivate
 
 
-Get started (active your environment)::
+Get started::
+
+Active your environment
 
     .. code-block:: bash
 
@@ -42,7 +44,7 @@ Get started (active your environment)::
         $ source myblocks-env/bin/activate 
 
 
-Create a new community block::
+Create a new community block
 
     .. code-block:: bash
 
@@ -51,7 +53,7 @@ Create a new community block::
 
 You'll be prompted for some questions, answer them, then it will create an empty replicator community block for you.
 
-The example is creating a EmailSender Block::
+This example is creating an EmailSender Block
 
     .. code-block:: bash
 
@@ -73,7 +75,7 @@ The 'replicator-EmailSender' has been created. You need code it, which is all ar
         $ cat EmailSender/main.js
 
 
-Check if the code is correct::
+Check if the code is correct
 
     .. code-block:: bash
 
@@ -81,11 +83,8 @@ Check if the code is correct::
         $ gulp
 
 
-Make the block available for the IDE::
+Make the block available for the IDE
 
     .. code-block:: bash
 
         $ ./testmyblock.sh
-
-
-
