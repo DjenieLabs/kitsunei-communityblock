@@ -1,5 +1,5 @@
 {
-    "block_name": "replicator-yourBlockName",
+    "block_name": "replicator-MyNewBlock",
     "block_shortname": "{{ cookiecutter.block_name|replace('replicator-', '') }}",
     "author_name": "Your Name",
     "email": "Your email",
