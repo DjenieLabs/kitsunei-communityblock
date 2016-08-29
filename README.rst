@@ -21,29 +21,32 @@ Prepare a Python Environment::
 It's possible create an environment for multiple community blocks, this isolated environment will keep all python dependencies for creating blocks.
 
     .. code-block:: bash
-    $ cd my_workspace
-    $ virtualenv myblocks-env
-    $ source myblocks-env/bin/activate
-    $ pip install cookiecutter
+
+        $ cd my_workspace
+        $ virtualenv myblocks-env
+        $ source myblocks-env/bin/activate
+        $ pip install cookiecutter
 
 Use the following command for deactivate your virtual env 
 
     .. code-block:: bash
-    $ deactivate
+
+        $ deactivate
 
 
 Get started (active your environment)::
 
     .. code-block:: bash
 
-    $ cd my_workspace
-    $ source myblocks-env/bin/activate 
+        $ cd my_workspace
+        $ source myblocks-env/bin/activate 
+
 
 Create a new community block::
 
     .. code-block:: bash
 
-    $ cookiecutter https://github.com/DjenieLabs/replicator-communityblock
+        $ cookiecutter https://github.com/DjenieLabs/replicator-communityblock
     
 
 You'll be prompted for some questions, answer them, then it will create an empty replicator community block for you.
@@ -52,37 +55,37 @@ The example is creating a EmailSender Block::
 
     .. code-block:: bash
 
-    Cloning into 'replicator-communityblock'...
-    ...
-    block_name (default is "replicator-BlockName")? replicator-EmailSender
-    block_shortname: (default is "EmailSender")? EmailSender
-    author_name (default is "Your Name")? Roger Camargo
-    email (default is "Your email")? huogerac@gmail.com
-    description (default is "A short description of the project.")? An email sender
-    version (default is "0.1.0")? 
+        Cloning into 'replicator-communityblock'...
+        ...
+        block_name (default is "replicator-BlockName")? replicator-EmailSender
+        block_shortname: (default is "EmailSender")? EmailSender
+        author_name (default is "Your Name")? Roger Camargo
+        email (default is "Your email")? huogerac@gmail.com
+        description (default is "A short description of the project.")? An email sender
+        version (default is "0.1.0")? 
 
 
 The 'replicator-EmailSender' has been created. You need code it, which is all around the file main.js:
 
     .. code-block:: bash
 
-    $ cd replicator-EmailSender
-    $ cat EmailSender/main.js
+        $ cd replicator-EmailSender
+        $ cat EmailSender/main.js
 
 
 Check if the code is correct::
 
     .. code-block:: bash
 
-    $ npm install
-    $ gulp
+        $ npm install
+        $ gulp
 
 
 Make the block available for the IDE::
 
     .. code-block:: bash
 
-    $ ./testmyblock.sh
+        $ ./testmyblock.sh
 
 
 
