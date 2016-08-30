@@ -79,6 +79,7 @@ Check if the code is correct
 
     .. code-block:: bash
 
+        $ npm install --global gulp-cli
         $ npm install
         $ gulp
 
