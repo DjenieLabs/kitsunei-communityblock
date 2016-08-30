@@ -31,6 +31,17 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   };
 
   /**
+   * When hasMissingProperties returns <true>
+   * the properties windown will be open automatically after clicking the 
+   * canvas block
+   */
+  {{ cookiecutter.block_shortname }}.hasMissingProperties = function() {
+    // Define a logic you want to return true and open the properties window
+    return false;
+  };
+
+
+  /**
    * Allows blocks controllers to change the content
    * inside the Logic Maker container
    */
