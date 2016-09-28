@@ -1,25 +1,24 @@
-<!-- Active node component -->
-<template id="node_icon">
-
-  <div class="block" id="{{ address }}" nodeName="{{ nodeName }}" blockId="{{ id }}" blockType="{{ code }}">
-    <i class="fa fa-map-signs"></i>
-    <span>
-      {{ name }}
-      <span class="badge">#{{ address }}</span>
-    </span>
-  </div>
-
+<!-- Optional -->
+<template id="hardware">
 </template>
 
-<!-- Menu component -->
-<template id="bar_icon">
+<!-- Optional -->
+<template id="virtual">
+</template>
 
-  <div class="sidebar__navigation-item" id="local{{ blockId }}">
-    <i class="sidebar__navigation-icon fa fa-map-signs"></i>
-    <div class="sidebar__navigation-label">
-      {{ name }}
-      <span class="badge">#{{ address }}</span>
-    </div>
+<!--
+WIDGET
+
+Use this area for Widget templates
+-->
+<template id="widget-template">
+
+  <div class="your widget-container">
+    <!-- Any custom html after this point -->
+
   </div>
+
+  <!-- Use {{path}} to refer to the current path -->
+  <link rel="stylesheet" href="{{path}}your-custom-style.css" />
 
 </template>
