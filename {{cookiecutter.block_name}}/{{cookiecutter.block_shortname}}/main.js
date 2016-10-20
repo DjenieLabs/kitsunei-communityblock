@@ -20,6 +20,14 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   };
 
   /**
+   * Use this method to control the visibility of the DataFeed
+   * By default it will show() the DataFeed, change it to true due to hide it. 
+   */
+  {{ cookiecutter.block_shortname }}.hideDataFeed = function() {
+    return false;
+  };
+
+  /**
    * Triggered when added for the first time to the side bar.
    * This script should subscribe to all the events and broadcast
    * to all its copies the data.
