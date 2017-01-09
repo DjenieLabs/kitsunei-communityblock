@@ -86,7 +86,17 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    * does not refer to this module, for that use '{{ cookiecutter.block_shortname }}'
    */
   {{ cookiecutter.block_shortname }}.onLoad = function() {
+    var that = this;
 
+    // Load previously stored settings
+    if (this.storedSettings && this.storedSettings.localField1) {
+      localField1 = this.storedSettings.localField1;
+    }
+
+    // Load our properties template and keep it in memory
+    this.loadTemplate('properties.html').then(function(template) {
+      that.propTemplate = template;
+    });
   };
 
 
@@ -118,6 +128,27 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    * use {{ cookiecutter.block_shortname }} or this.controller
    */
   {{ cookiecutter.block_shortname }}.onClick = function() {
+    var that = this;
+
+    Ppanel.onClose(function(){
+      that.cancelLoading();
+      that.cancelSaving();
+      Ppanel.stopLoading();
+    });
+
+    Ppanel.loading("Loading settings...");
+
+    // Render the template
+    var html = $(that.propTemplate({
+      localField1: localField1,
+    }));
+
+    this._propContainer = html;
+
+    // Display elements
+    easy.displayCustomSettings(html, true);
+
+    Ppanel.stopLoading();
 
   };
 
