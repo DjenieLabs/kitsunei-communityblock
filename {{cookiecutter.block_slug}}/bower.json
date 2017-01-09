@@ -1,5 +1,5 @@
 {
-  "name": "{{ cookiecutter.block_name }}",
+  "name": "{{ cookiecutter.block_slug }}",
   "version": "{{ cookiecutter.version }}",
   "description": "{{ cookiecutter.description }}",
   "homepage": "",

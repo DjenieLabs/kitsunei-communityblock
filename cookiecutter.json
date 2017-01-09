@@ -1,11 +1,10 @@
 {
     "block_name": "replicator-MyNewBlock",
+    "block_slug": "{{ cookiecutter.block_name|replace(' ', '') }}",
     "block_shortname": "{{ cookiecutter.block_name|replace('replicator-', '') }}",
+    "block_category": ["Hardware", "Virtual", "Widget"],
     "author_name": "Your Name",
     "email": "Your email",
-    "description": "A short description of the project.",
-    "version": "0.1.0",
-    "_copy_without_render": [
-        "*.html", "**/*.html"
-    ]
+    "description": "Why this block for?",
+    "version": "0.1.0"
 }
