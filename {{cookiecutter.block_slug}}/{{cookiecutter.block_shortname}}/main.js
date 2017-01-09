@@ -1,5 +1,6 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy) {
 
+{% if cookiecutter.block_category == 'Hardware' or cookiecutter.block_category == 'Virtual' %}
   var actions = ["ACTION1", "ACTION2"];
   var inputs = [];
   var _objects = {};
@@ -175,6 +176,85 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   {{ cookiecutter.block_shortname }}.onAddedtoCanvas = function() {
 
   };
+
+{% endif %}
+
+{% if cookiecutter.block_category == 'Widget' %}
+
+  var {{ cookiecutter.block_shortname }} = {};
+
+  {{ cookiecutter.block_shortname }}.getInputs = function() {
+    return ['Input1', ];
+  };
+
+  {{ cookiecutter.block_shortname }}.onBeforeSave = function(){
+    return {
+      txtTitle: this._txtTitle
+    };
+  };
+
+
+  {{ cookiecutter.block_shortname }}.onLoad = function(){
+    var that = this;
+
+    if (this.storedSettings && this.storedSettings.hasOwnProperty('txtTitle')) {
+      this._txtTitle = this.storedSettings.txtTitle;
+
+    } else {
+      this._txtTitle = "Kitsunei Title";
+
+    }
+
+    this.preloadTemplate('properties.html').then(function(template) {
+
+      that._propTemplate = template;
+
+    }).catch(function(err){
+      console.log("Error preloading template: ", err);
+    });
+
+    // Define an event listener
+    this.onData(function(data, target){
+      analyseData.call(that, data, target);
+    });
+
+    this._showInput1 = this.canvasIcon.find("#showInput1");
+
+  };
+
+
+  {{ cookiecutter.block_shortname }}.onClick = function() {
+    Ppanel.loading();
+
+    // Load basic properties?
+    this.loadBaseFeeds();
+
+    var that = this;
+    // Any processing here
+    var html = this._propTemplate(this);
+    this._container = this.displayCustomSettings($(html));
+
+    var changeSettings = function(type) {
+      if (type === "txtTitle") {
+        this._txtTitle = this._container.find("#txtTitle").val();
+        this.canvasIcon.find("#txtTitle").text( this._txtTitle );
+      }
+    };
+
+    this._container.find("#txtTitle").css("value", this._txtTitle);
+    this._container.find("#txtTitle").change(changeSettings.bind(this, 'txtTitle'));
+
+    Ppanel.stopLoading();
+
+  };
+
+  function analyseData(data, targetInput){
+    if (targetInput === 'Input1') {
+      this._showInput1.text(data);
+    }
+  }
+
+{% endif %}
 
   return {{ cookiecutter.block_shortname }};
 
