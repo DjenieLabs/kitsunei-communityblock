@@ -1,29 +1,22 @@
 {% raw %}
 
-{% if cookiecutter.block_category == 'Hardware' %}
-<!-- index.html is not used for Hardware blocks -->
-{% endif %}
+<!-- FOR Hardware blocks, index.html is not necessary -->
 
-{% if cookiecutter.block_category == 'Virtual' %}
-<!-- Virtual Block: {{ cookiecutter.block_shortname }} -->
+
+<!-- FOR Virtual blocks, index.html might no be not necessary too
+
 <template id="node_icon">
+  <div></div>
+</template> -->
 
-  <div>
-    <!-- find out where the index.html could be used for Virtual blocks -->
-  </div>
 
-</template>
-{% endif %}
+<!-- FOR Widget blocks, use the following template:
 
-{% if cookiecutter.block_category == 'Widget' %}
-<!-- Widget Block: {{ cookiecutter.block_shortname }} -->
 <template id="widget-template">
 
-  <!-- Load all Dependencies -->
   <link rel="stylesheet" href="{{basePath}}custom-style.css" />
 
   <div class="graph widget-container">
-    <!-- Any custom html after this point -->
     <div class="widgetContainer" id="widgetContainer">
       <h3 class="widgetTitle" id="txtTitle">Kitsunei Title</h3>
       <p style="line-height: 60px; padding-bottom: 30px;">
@@ -32,7 +25,6 @@
     </div>
   </div>
 
-</template>
-{% endif %}
+</template> -->
 
 {% endraw %}
