@@ -1,5 +1,5 @@
 {
-  "name": "replicator-communityblock",
+  "name": "{{ cookiecutter.block_slug }}",
   "version": "0.0.1",
   "description": "Code static quality checker for community blocks",
   "repository": "{{ cookiecutter.block_slug }}",

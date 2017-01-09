@@ -1,26 +1,38 @@
 {% raw %}
-<!-- Optional -->
-<template id="hardware">
-</template>
 
-<!-- Optional -->
-<template id="virtual">
-</template>
+{% if cookiecutter.block_category == 'Hardware' %}
+<!-- index.html is not used for Hardware blocks -->
+{% endif %}
 
-<!--
-WIDGET
+{% if cookiecutter.block_category == 'Virtual' %}
+<!-- Virtual Block: {{ cookiecutter.block_shortname }} -->
+<template id="node_icon">
 
-Use this area for Widget templates
--->
-<template id="widget-template">
-
-  <div class="your widget-container">
-    <!-- Any custom html after this point -->
-
+  <div>
+    <!-- find out where the index.html could be used for Virtual blocks -->
   </div>
 
-  <!-- Use {{path}} to refer to the current path -->
-  <link rel="stylesheet" href="{{path}}your-custom-style.css" />
+</template>
+{% endif %}
+
+{% if cookiecutter.block_category == 'Widget' %}
+<!-- Widget Block: {{ cookiecutter.block_shortname }} -->
+<template id="widget-template">
+
+  <!-- Load all Dependencies -->
+  <link rel="stylesheet" href="{{basePath}}custom-style.css" />
+
+  <div class="graph widget-container">
+    <!-- Any custom html after this point -->
+    <div class="widgetContainer" id="widgetContainer">
+      <h3 class="widgetTitle" id="txtTitle">Kitsunei Title</h3>
+      <p style="line-height: 60px; padding-bottom: 30px;">
+        <span id="showInput1" style="font-size: 6em;">Input 1</span>
+      </p>
+    </div>
+  </div>
 
 </template>
+{% endif %}
+
 {% endraw %}
