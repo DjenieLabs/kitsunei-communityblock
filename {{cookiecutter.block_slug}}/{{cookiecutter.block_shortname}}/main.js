@@ -29,6 +29,22 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     return inputs;
   };
 
+  // (OPTIONAL)
+  // When there is a getDefaultInput method, the event processor
+  // will send the given INPUT for all target blocks (possibility of execute events without opening the LM)
+  // IMPORTANT: Output Blocks SHOULD NOT have this method
+  {{ cookiecutter.block_shortname }}.getDefaultInput = function() {
+    return "";
+  };
+
+  // (OPTIONAL)
+  // When there is a getDefaultAction method, the event processor
+  // execute the given ACTION (possibility of execute events without opening the LM)
+  // IMPORTANT: Input Blocks SHOULD NOT have this method
+  {{ cookiecutter.block_shortname }}.getDefaultAction = function() {
+    return actions[0];
+  };
+
   // Use onBeforeSave for return the data/fields you want to save
   {{ cookiecutter.block_shortname }}.onBeforeSave = function() {
     return { localField1: localField1 };
