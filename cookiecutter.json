@@ -5,6 +5,6 @@
     "block_category": ["Hardware", "Virtual", "Widget"],
     "author_name": "Your Name",
     "email": "Your email",
-    "description": "Why this block for?",
+    "description": "What is this block for?",
     "version": "0.1.0"
 }

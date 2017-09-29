@@ -70,10 +70,10 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   /**
    * Intercepts the properties panel closing action.
    * Return "false" to abort the action.
-   * NOTE: Settings Load/Saving will atomatically
+   * NOTE: Settings Load/Saving will automatically
    * stop re-trying if the event propagates.
    */
-  {{ cookiecutter.block_shortname }}..onCancelProperties = function() {
+  {{ cookiecutter.block_shortname }}.onCancelProperties = function() {
     console.log("Cancelling Properties");
   };
 
@@ -99,8 +99,8 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    * Triggered when added for the first time to the side bar.
    * This script should subscribe to all the events and broadcast
    * to all its copies the data.
-   * NOTE: The call is bind to the block's instance, hence 'this'
-   * does not refer to this module, for that use '{{ cookiecutter.block_shortname }}'
+   * NOTE: The call is bound to the block's instance, hence 'this'
+   * does not refer to this module, for that use "this.controller"
    */
   {{ cookiecutter.block_shortname }}.onLoad = function() {
     var that = this;
@@ -138,10 +138,10 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
 
   /**
    * Triggered when the user clicks on a block.
-   * The interace builder is automatically opened.
+   * The properties panel is opened automatically.
    * Here we must load the elements.
    * NOTE: This is called with the scope set to the
-   * Block object, to emailsess this modules properties
+   * Block object, to refer to this module's properties
    * use {{ cookiecutter.block_shortname }} or this.controller
    */
   {{ cookiecutter.block_shortname }}.onClick = function() {
@@ -189,11 +189,25 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    * I need to keep a copy of the processor to be triggered when
    * new data arrives.
    */
-  {{ cookiecutter.block_shortname }}.onAddedtoCanvas = function() {
+  {{ cookiecutter.block_shortname }}.onAddedToCanvas = function() {
 
   };
 
 {% endif %}
+
+  /**
+   * This method is called when the user hits the "Save"
+   * recipe button. Any object you return will be stored
+   * in the recipe and can be retrieved during startup (@onLoad) time.
+   * Be aware that only primitive properties are stored
+   * (Numbers, Strings)
+   */
+  {{ cookiecutter.block_shortname }}.onBeforeSave = function(){
+    return {
+      txtTitle: this._txtTitle
+    };
+  };
+
 
 {% if cookiecutter.block_category == 'Widget' %}
 
@@ -203,13 +217,14 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     return ['Input1', ];
   };
 
-  {{ cookiecutter.block_shortname }}.onBeforeSave = function(){
-    return {
-      txtTitle: this._txtTitle
-    };
-  };
-
-
+  /**
+   * Triggered when added to the canvas.
+   * This script should subscribe to all the events and broadcast
+   * data to all its copies (by using dispatchDataFeed()).
+   * 
+   * NOTE: The call is bound to the block's instance, hence 'this'
+   * does not refer to this module, for that use 'MotorDriver'
+   */
   {{ cookiecutter.block_shortname }}.onLoad = function(){
     var that = this;
 
@@ -238,7 +253,14 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
 
   };
 
-
+  /**
+   * Triggered when the user clicks on a widget.
+   * The properties panel is opened automatically.
+   * Here you must load the interface elements.
+   * NOTE: This is called with the scope set to the
+   * Block's object, to refer to this module's properties
+   * use this.controller
+   */
   {{ cookiecutter.block_shortname }}.onClick = function() {
     Ppanel.loading();
 
