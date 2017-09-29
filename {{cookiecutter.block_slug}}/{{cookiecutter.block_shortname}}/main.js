@@ -29,42 +29,62 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     return inputs;
   };
 
-  // (OPTIONAL)
-  // When there is a getDefaultInput method, the event processor
-  // will send the given INPUT for all target blocks (possibility of execute events without opening the LM)
-  // IMPORTANT: Output Blocks SHOULD NOT have this method
+  /**
+   * (OPTIONAL)
+   * Called when no logic has been added in the Logic Maker.
+   * Here you can define the default input to use to send
+   * data to any child block connected to this block's canvas.
+   * IMPORTANT: Output Blocks SHOULD NOT have this method
+   */
   {{ cookiecutter.block_shortname }}.getDefaultInput = function() {
     return "";
   };
 
-  // (OPTIONAL)
-  // When there is a getDefaultAction method, the event processor
-  // execute the given ACTION (possibility of execute events without opening the LM)
-  // IMPORTANT: Input Blocks SHOULD NOT have this method
+  /**
+   * (OPTIONAL)
+   * Called when no logic has been added in the Logic Maker.
+   * Here you can define a default action for your block to 
+   * execute when a signal is sent.
+   * IMPORTANT: Input Blocks SHOULD NOT use this method
+   */
   {{ cookiecutter.block_shortname }}.getDefaultAction = function() {
-    return actions[0];
+    // return actions[0];
   };
 
-  // Use onBeforeSave for return the data/fields you want to save
+  /**
+   * This method is called when the user hits the "Save"
+   * recipe button. Any object you return will be stored
+   * in the recipe and can be retrieved during startup (@onLoad) time.
+   * Be aware that only primitive properties are stored
+   * (Numbers, Strings)
+   */
   {{ cookiecutter.block_shortname }}.onBeforeSave = function() {
     return { localField1: localField1 };
   };
 
   /**
-   * Use this method to control the visibility of the DataFeed
-   * By default it will show() the DataFeed, change it to true due to hide it. 
+   * Use this method to control the visibility of the DataFeed panel
+   * By default the DataFeed is shown when the user clicks on the
+   * canvas Icon. Return true to prevent the panel from showing.
    */
   {{ cookiecutter.block_shortname }}.hideDataFeed = function() {
     return false;
   };
 
 
-  // Use hasMissingProperties to open/not open the properties panel
+
+  /**
+   * When a canvas block is clicked on, this method is executed
+   * to check if the properties panel needs to open automatically.
+   * This is useful in those cases when users MUST define some
+   * properties in order to make the block work.
+   */
   {{ cookiecutter.block_shortname }}.hasMissingProperties = function() {
-    if (localField1.length > 0) {
-      return false; // keep it closed
-    }
-    return true; // will open the properties
+    // if (this.parameterFilledUp) {
+    //   return false; // keep it closed
+    // }
+
+    // return true;    // will open the properties
   };
 
   /**
@@ -176,12 +196,49 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
 
   };
 
-  // Returns the current value of my inputs
-  // {{ cookiecutter.block_shortname }}.onRead = function(){};
-
   // Optional event handlers
   {{ cookiecutter.block_shortname }}.onMouseOver = function() {
-    // console.log("Mouse Over on ", myself.canvasIcon.id, evt);
+    // console.log("Mouse Over on ", this.canvasIcon.id, evt);
+  };
+
+  {{ cookiecutter.block_shortname }}.onMouseOut = function() {
+    // console.log("Mouse out!");
+  };
+
+  /**
+   * Blocks have the ability to be replaced by other blocks
+   * by dragging and dropping a block from the left panel
+   * onto the canvas instance. This is useful when for example
+   * you move a hardware block to a different radio. Since
+   * once powered up again, it will appear as a different block
+   * (because it now belongs to a different node), rather than
+   * adding the new block to the canvas and copy the logic from 
+   * the offline one, you can just drag and drop the new
+   * block onto the offline instance in your canvas; this will
+   * associate the offline block with the online instance, hence
+   * making it appear online again.
+   * 
+   * This is also true for virtual blocks in cases when you create
+   * a virtual block that uses a hardware one.
+   * 
+   * In this method you need to return an array of numbers
+   * that correspond to the serial number of the blocks you want
+   * to accept. Hardware blocks don't need to return their serial
+   * number as they are accepted by default.
+   */
+  {{ cookiecutter.block_shortname }}.getDroppableBlockList = function() {
+    // var accelerometer = 100;
+    // var IMU = 130;
+    // var temperature = 105;
+    // return [accelerometer, IMU, temperature];
+  };
+
+  /**
+   * Called when a new block is dropped onto this block's 
+   * canvas instance.
+   */
+  {{ cookiecutter.block_shortname }}.onBlockDropped = function(droppedBlock){
+    // console.log("A new block has been dropped: %s", droppedBlock.name);
   };
 
   /**
