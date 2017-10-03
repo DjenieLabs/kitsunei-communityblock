@@ -1,7 +1,7 @@
 {
-    "block_name": "replicator-MyNewBlock",
+    "block_name": "kitsunei-MyNewBlock",
     "block_slug": "{{ cookiecutter.block_name|replace(' ', '') }}",
-    "block_shortname": "{{ cookiecutter.block_slug|replace('replicator-', '') }}",
+    "block_shortname": "{{ cookiecutter.block_slug|replace('kitsunei-', '') }}",
     "block_category": ["Hardware", "Virtual", "Widget"],
     "author_name": "Your Name",
     "email": "Your email",

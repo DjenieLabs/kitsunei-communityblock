@@ -1,8 +1,8 @@
 =======================================
-cookiecutter-replicator-community-block
+cookiecutter-kitsunei-community-block
 =======================================
 
-A cookiecutter_ template for Replicator Community Blocks.
+A cookiecutter_ template for kitsunei Community Blocks.
 
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
 
@@ -48,30 +48,30 @@ Create a new community block
 
     .. code-block:: bash
 
-        $ cookiecutter https://github.com/DjenieLabs/replicator-communityblock
+        $ cookiecutter https://github.com/DjenieLabs/kitsunei-communityblock
     
 
-You'll be prompted for some questions, answer them, then it will create an empty replicator community block for you.
+You'll be prompted for some questions, answer them, then it will create an empty kitsunei community block for you.
 
 This example is creating an EmailSender Block
 
     .. code-block:: bash
 
-        Cloning into 'replicator-communityblock'...
+        Cloning into 'kitsunei-communityblock'...
         ...
-        block_name (default is "replicator-BlockName")? replicator-EmailSender
+        block_name (default is "kitsunei-BlockName")? kitsunei-EmailSender
         block_shortname: (default is "EmailSender")? EmailSender
         author_name (default is "Your Name")? Roger Camargo
-        email (default is "Your email")? huogerac@gmail.com
+        email (default is "Your email")? your@email.com
         description (default is "A short description of the project.")? An email sender
         version (default is "0.1.0")? 
 
 
-The 'replicator-EmailSender' has been created. You need code it, which is all around the file main.js:
+The 'kitsunei-EmailSender' has been created. You need code it, which is all around the file main.js:
 
     .. code-block:: bash
 
-        $ cd replicator-EmailSender
+        $ cd kitsunei-EmailSender
         $ cat EmailSender/main.js
 
 
