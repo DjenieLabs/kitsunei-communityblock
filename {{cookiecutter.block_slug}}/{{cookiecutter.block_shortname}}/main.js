@@ -130,6 +130,13 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       localField1 = this.storedSettings.localField1;
     }
 
+    // Load any dependency
+    var assets = that.basePath + 'js/';
+    require([assets+'helper.js'], function(helper){
+      console.log("Module loaded!");
+      console.log(helper.addUp(1, 2));
+    });
+
     // Load our properties template and keep it in memory
     this.loadTemplate('properties.html').then(function(template) {
       that.propTemplate = template;

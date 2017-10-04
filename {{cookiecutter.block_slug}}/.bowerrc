@@ -1,0 +1,3 @@
+{
+	"directory": "{{cookiecutter.block_shortname}}/components/"
+}

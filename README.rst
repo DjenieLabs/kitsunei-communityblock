@@ -88,4 +88,17 @@ Make the block available for the IDE
 
     .. code-block:: bash
 
-        $ ./testmyblock.sh
+        $ npm run start
+
+## Publishing
+
+Before publishing your block you need to compile it and push it to your repository:
+
+    .. code-block:: bash
+
+        $npm run build
+        $git push origin master
+
+This will create a 'dist' folder in your root directory. You can then go to creator.kitsunei.com/block/list/hardware/ and publish a new version.
+
+Be aware that if a 'dist' directory doesn't not exist in your repository the publishing process will fail.

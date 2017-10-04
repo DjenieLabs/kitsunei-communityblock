@@ -1,15 +1,57 @@
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    jshint = require('gulp-jshint');
+    utils = require('gulp-util'),
+    jshint = require('gulp-jshint'),
+    pump = require('pump');
+    uglify = require('gulp-uglify'),
+    uglifycss = require('gulp-uglifycss'),
+    htmlmin = require('gulp-htmlmin');
+
+// Include Gulp
+var gulp = require('gulp');
+var dest = "dist/";
 
 // Check the code quality
 gulp.task('qualitychecker', function(cb) {
-    return gulp.src([
-      '**/*.js',
-      '!node_modules/**/*.js'])
-    .pipe(jshint({esversion: 6}))
-    .pipe(jshint.reporter('default'))
-    .on('error', gutil.log);
+	return gulp.src([
+		'**/*.js',
+		'!node_modules/**/*.js',
+		'!dist/**/*.js',
+		'!{{cookiecutter.block_shortname}}/components/**/*.js'])
+		.pipe(jshint({esversion: 6}))
+		.pipe(jshint.reporter('default'))
+		.on('error', utils.log);
 });
 
+
+gulp.task('js', function (cb) {
+  pump([
+    gulp.src('{{cookiecutter.block_shortname}}/**/*.js'),
+    uglify(),
+    gulp.dest(dest)
+    ],
+    cb
+  );
+});
+
+
+gulp.task('css', function(cb) {
+	pump([
+		gulp.src('{{cookiecutter.block_shortname}}/**/*.css'),
+		uglifycss(),
+		gulp.dest(dest)
+	], cb);
+});
+
+
+gulp.task('html', function (cb) {
+  pump([
+    gulp.src('{{cookiecutter.block_shortname}}/**/*.html'),
+    htmlmin({collapseWhitespace: true}),
+    gulp.dest(dest)
+    ],
+    cb
+  );
+});
+
+gulp.task('build', ['js', 'css', 'html']);
 gulp.task('default', ['qualitychecker']);
