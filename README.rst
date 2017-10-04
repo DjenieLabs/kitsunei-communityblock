@@ -90,7 +90,8 @@ Make the block available for the IDE
 
         $ npm run start
 
-## Publishing
+Publishing
+-------
 
 Before publishing your block you need to compile it and push it to your repository:
 
