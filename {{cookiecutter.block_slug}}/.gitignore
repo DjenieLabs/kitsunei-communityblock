@@ -1,4 +1,3 @@
 node_modules/
-dist/
 .bowerrc
 {{cookiecutter.block_shortname}}/components/
