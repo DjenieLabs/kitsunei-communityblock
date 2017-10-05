@@ -4,10 +4,10 @@ var gulp = require('gulp'),
     pump = require('pump');
     uglify = require('gulp-uglify'),
     uglifycss = require('gulp-uglifycss'),
-    htmlmin = require('gulp-htmlmin');
+    htmlmin = require('gulp-htmlmin'),
+    babel = require('gulp-babel');
 
-// Include Gulp
-var gulp = require('gulp');
+
 var dest = "dist/";
 
 // Check the code quality
@@ -26,6 +26,7 @@ gulp.task('qualitychecker', function(cb) {
 gulp.task('js', function (cb) {
   pump([
     gulp.src('{{cookiecutter.block_shortname}}/**/*.js'),
+    babel({"presets": ["env"]}),
     uglify(),
     gulp.dest(dest)
     ],
