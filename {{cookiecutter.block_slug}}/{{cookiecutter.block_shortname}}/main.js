@@ -63,6 +63,20 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   };
 
   /**
+   * Called when a hardware block goes offline
+   */
+  {{ cookiecutter.block_shortname }}.onConnectionClosed = function(event) {
+
+  };
+
+  /**
+   * Called when the connection to a hardware block has been reestablished
+   */
+  {{ cookiecutter.block_shortname }}.onConnectionReestablished = function(event) {
+
+  };
+
+  /**
    * Use this method to control the visibility of the DataFeed panel
    * By default the DataFeed is shown when the user clicks on the
    * canvas Icon. Return true to prevent the panel from showing.
@@ -161,7 +175,7 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
   {{ cookiecutter.block_shortname }}.onExecute = function(event) {
 
   };
-
+  
 
   /**
    * Triggered when the user clicks on a block.
