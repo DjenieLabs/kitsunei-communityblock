@@ -60,13 +60,13 @@ gulp.task("html", function(cb) {
 });
 
 gulp.task("clean", function(cb) {
-  return del([dest + "/installer.asar"]);
+  return del([dest + "/bundle.asar"]);
 });
 
 gulp.task("bundle", function(cb) {
   return pump([
-    gulp.src([dest + "/**", "!/installer.asar"]),
-    gulpAsar("installer.asar"),
+    gulp.src([dest + "/**", "!/bundle.asar"]),
+    gulpAsar("bundle.asar"),
     gulp.dest(dest)
   ]);
 });
