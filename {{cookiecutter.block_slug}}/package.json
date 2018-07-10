@@ -23,8 +23,11 @@
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.8",
     "gulp-util": "^3.0.7",
+    "gulp-zip": "^4.1.0",
     "http-server": "^0.9.0",
     "jshint": "^2.9.3",
-    "pump": "^1.0.2"
+    "main-bower-files": "^2.13.1",
+    "pump": "^1.0.2",
+    "through2": "^2.0.3"
   }
 }

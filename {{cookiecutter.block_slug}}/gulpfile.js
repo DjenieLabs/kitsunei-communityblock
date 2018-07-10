@@ -6,7 +6,7 @@ var gulp = require("gulp"),
   uglifycss = require("gulp-uglifycss"),
   htmlmin = require("gulp-htmlmin"),
   babel = require("gulp-babel"),
-  gulpAsar = require("gulp-asar"),
+  zip = require('gulp-zip'),
   del = require("del");
 
 var dest = "dist/";
@@ -59,16 +59,20 @@ gulp.task("html", function(cb) {
   );
 });
 
-gulp.task("clean", function(cb) {
-  return del([dest + "/bundle.asar"]);
+gulp.task('clean', function (cb) {
+	return del([dest + "/bundle.block"])
 });
 
-gulp.task("bundle", function(cb) {
-  return pump([
-    gulp.src([dest + "/**", "!/bundle.asar"]),
-    gulpAsar("bundle.asar"),
-    gulp.dest(dest)
-  ]);
+
+gulp.task('bundle', function (cb) {
+	return pump([
+		gulp.src([
+			dest + '/**',
+			'!/bundle.block'	
+		]),
+		zip('bundle.block'),
+		gulp.dest(dest)
+	]);
 });
 
 gulp.task(
