@@ -7,6 +7,7 @@ var gulp = require("gulp"),
   htmlmin = require("gulp-htmlmin"),
   babel = require("gulp-babel"),
   zip = require('gulp-zip'),
+  asar = require('asar'),
   del = require("del");
 
 var dest = "dist/";
@@ -60,24 +61,20 @@ gulp.task("html", function(cb) {
 });
 
 gulp.task('clean', function (cb) {
-	return del([dest + "/bundle.block"])
+	return del([dest + "/bundle.asar"])
 });
 
 
 gulp.task('bundle', function (cb) {
-	return pump([
-		gulp.src([
-			dest + '/**',
-			'!/bundle.block'	
-		]),
-		zip('bundle.block'),
-		gulp.dest(dest)
-	]);
+	asar.createPackage(dest, dest + '/bundle.asar', function() {
+		return pump([
+			gulp.src(dest + '/bundle.asar'),
+			zip('bundle.block'),
+			gulp.dest(dest)
+		], cb);
+	});
 });
 
-gulp.task(
-  "build",
-  gulp.series("clean", gulp.parallel("js", "css", "html"), "bundle")
-);
 
+gulp.task('build', gulp.series('clean', gulp.parallel('js', 'css', 'html'), 'bundle', 'clean'));
 gulp.task("default", gulp.series("qualitychecker"));
